@@ -1,0 +1,97 @@
+// https://www.hl7.org/fhir/appointment.html
+// Es necesario decidir un sistema de categorias para las citas y para los tipos de servicios
+// HL7 tiene un sistema de terminologia estandar que se puede usar, pero se pueden integrar otros sistemas de categorias
+// https://terminology.hl7.org/6.0.0/valuesets.html
+// El identificador es la llave publica del evento de Nostr, permite encontrar el evento en cualquier relay 
+// donde haya sido compartido
+
+{
+    "resourceType" : "Appointment",
+    "id" : "id-interno-appointment-1",
+    "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\">Brian MRI results discussion</div>"
+    },
+    "identifier" : [{
+        "system" : "wss://relay.illuminodes.com",
+        "value" : "npub2jk45235j34523lk523jb5l23524b52j3b5l2"
+    },
+    {
+        "system" : "wss://personal.relay.com",
+        "value" : "npub2jk45235j34523lk523jb5l23524b52j3b5l2"
+    }
+    ],
+    "status" : "proposed",
+    // QUe tipo de servicio se ofrece (general medico, cirugia, etc)
+    "serviceCategory" : [{
+        "coding" : [{
+            "system" : "http://example.org/service-category",
+            "code" : "gp",
+            "display" : "General Practice"
+        }]
+    }],
+    // Especialiad del servicio
+    "specialty" : [{
+        "coding" : [{
+            "system" : "http://snomed.info/sct",
+            "code" : "394814009",
+            "display" : "General practice"
+        }]
+    }],
+    // Tipo de cita (en nuestro caso sera siempre de tipo rutina, ya que fue reservada previamente)
+    "appointmentType" : {
+        "coding" : [{
+            "system" : "http://terminology.hl7.org/CodeSystem/v2-0276",
+            "code" : "ROUTINE",
+            "display" : "Routine appointment"
+        }]
+    },
+    // Razon de la cita (se necesita un sistema de categorizacion)
+    "reason" : [{
+        "concept" : {
+            "coding" : [{
+                "system" : "http://snomed.info/sct",
+                "code" : "413095006"
+            }],
+            "text" : "Clinical Review"
+        }
+    }],
+    "description" : "Discussion on the results of your recent MRI",
+    "minutesDuration" : 15,
+    "requestedPeriod" : [{
+        "start" : "2016-06-02",
+        "end" : "2016-06-09"
+    }],
+    "slot" : [{
+        "reference" : "Slot"
+    }],
+    "created" : "2015-12-02",
+    "note" : [{
+        "text" : "Further expand on the results of the MRI and determine the next actions that may be appropriate."
+    }],
+    "subject" : {
+        "reference" : "Practioner",
+        "display" : "Maria Solis"
+    },
+    "participant" : [
+        // Podemos agregar informacion de los pacientes que se veran en la cita
+        {
+            "actor" : {
+                "reference" : "Patient",
+                "display" : "Peter James Chalmers"
+            },
+            "required" : true,
+            // Se puede usar para confirmar la asistencia del paciente
+            "status" : "needs-action"
+        },
+        // La informacion del consultorio donde se llevara a cabo la cita se considera como un "participante"
+        {
+            "actor" : {
+                "reference" : "Location/1",
+                "display" : "South Wing, second floor"
+            },
+            "required" : true,
+            "status" : "accepted"
+        }]
+}
+

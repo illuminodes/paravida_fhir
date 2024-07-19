@@ -1,0 +1,52 @@
+// https://www.hl7.org/fhir/practitioner.html
+// Perfil de un medico, define los datos de contacto y la especialidad
+// El identificador es unico y se puede usar para referenciar al medico en otros recursos Nostr
+{
+    "resourceType" : "Practitioner",
+    "id" : "paravida-interno0001",
+    "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      \n      <p>Dr Maria Solis</p>\n    \n    </div>"
+    },
+    "identifier" : [{
+        "use" : "official",
+        "system" : "wss://relay.illuminodes.com",
+        "value" : "npubsdgsdfgsdg3452345wg4432323ff"
+    },
+    {
+        "use" : "usual",
+        "system" : "wss://relay.personal.com",
+        "value" : "npubjlh3452j3b5j2h4b63jb6364jj3b56"
+    }],
+    "name" : [{
+        "use" : "official",
+        "family" : "Solis",
+        "given" : ["Maria"],
+        "suffix" : ["Dr"]
+    }],
+    "telecom" : [{
+        "system" : "phone",
+        "value" : "+503 77777777",
+        "use" : "work"
+    },
+    {
+        "system" : "email",
+        "value" : "mariasolis@mail.es",
+        "use" : "work"
+    },
+    {
+        "system" : "fax",
+        "value" : "0205669283",
+        "use" : "work"
+    }],
+    "gender" : "female",
+    "birthDate" : "1971-11-07",
+    "address" : [{
+        "use" : "work",
+        "line" : ["Col Miramonte, 3ra Calle Poniente, 3ra Ave Sur, n1"],
+        "city" : "San Salvador",
+        "postalCode" : "110110",
+        "country" : "ELS"
+    }]
+}
+

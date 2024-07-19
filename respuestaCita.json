@@ -1,0 +1,24 @@
+
+// https://www.hl7.org/fhir/appointmentresponse.html
+// Respuesta a una citas
+// hace referencia a la cita y al paciente a traves de los identificadores Nostr
+
+{
+    "resourceType" : "AppointmentResponse",
+    "id" : "id-interno-paravida",
+    "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\">Accept Brian MRI results discussion</div>"
+    },
+    "appointment" : {
+        "reference" : "Appointment",
+        "identifier" : "nevent2342058293h5jkhkwehwe9gsgj99348539346356",
+        "display" : "Brian MRI results discussion"
+    },
+    "actor" : {
+        "reference" : "Patient",
+        "identifier" : "npubql3j52l45l23j5l25lqh5l23h5lq5l23",
+        "display" : "Peter James Chalmers"
+    },
+    "participantStatus" : "accepted"
+}

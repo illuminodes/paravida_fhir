@@ -1,0 +1,30 @@
+
+// https://www.hl7.org/fhir/organization-definitions.html
+// Perfil de una organizacion, define los datos de contacto y el nombre de la organizacion
+// El identificador es unico y se puede usar para referenciar a la organizacion en otros recursos Nostr
+{
+    "resourceType" : "Organization",
+    "id" : "1",
+    "text" : {
+        "status" : "generated",
+        "div" : "<div xmlns=\"http://www.w3.org/1999/xhtml\">\n      \n      <p>Paravida Escalon. ph: +503 77777777, email: \n        <a href=\"mailto:paravida@gmial.com\">paravida@gmail.com</a>\n      </p>\n    \n    </div>"
+    },
+    "identifier" : [{
+        "system" : "wss://relay.illuminodes.com",
+        "value" : "npubql3j52l45l23j5l25lqh5l23h5lq5l23"
+    }],
+    "name" : "Paravida Escalon",
+    "contact" : [{
+        "telecom" : [{
+            "system" : "phone",
+            "value" : "+503 77777777",
+            "use" : "mobile"
+        },
+        {
+            "system" : "email",
+            "value" : "paravida@gmail.com",
+            "use" : "work"
+        }]
+    }]
+}
+
